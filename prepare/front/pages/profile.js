@@ -1,7 +1,6 @@
 import AppLayout from "../components/AppLayout";
 import NicknameEditForm from "../components/NicknameEditForm";
 import FollowList from "../components/FollowList";
-import followerList from "../components/FollowerList";
 
 import Head from "next/head";
 

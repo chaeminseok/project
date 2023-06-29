@@ -2,22 +2,23 @@ import React, { useState, useCallback, useMemo } from "react";
 import { Form, Input, Button } from "antd";
 import Link from "next/link";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 import useInput from "../hooks/useInput";
+import { useDispatch } from "react-redux";
+import { loginAction } from "../reducers/user";
 /*{const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;}*/
 const FormWrapper = styled(Form)`
   padding: 10px;
 `;
-const LoginForm = ({ setLogin }) => {
+const LoginForm = () => {
   const [id, onChangeId] = useInput("");
   const [password, onChangePassword] = useInput("");
-
+  const dispatch = useDispatch();
   const onSubmitForm = useCallback(() => {
     //이미 preventDefault가 적용 되있음
     console.log(id, password);
-    setLogin(true);
+    dispatch(loginAction({ id, password }));
   }, [id, password]);
   const style = useMemo(
     () => ({
@@ -56,7 +57,5 @@ const LoginForm = ({ setLogin }) => {
     </FormWrapper>
   );
 };
-LoginForm.propTypes = {
-  setLogin: PropTypes.func.isRequired,
-};
+
 export default LoginForm;
