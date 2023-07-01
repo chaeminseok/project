@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Button, Form, Input } from "antd";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -9,9 +9,9 @@ const PostForm = () => {
   const imageInput = useRef();
   const dispatch = useDispatch();
 
-  const onChangeText = (e) => {
+  const onChangeText = useCallback((e) => {
     setText(e.target.value);
-  };
+  });
   const onClickImageUpload = useCallback(() => {
     imageInput.current.click();
   }, [imageInput.current]);
@@ -37,7 +37,7 @@ const PostForm = () => {
       <div>
         <input type="file" multiple hidden ref={imageInput} />
         <Button onClick={onClickImageUpload}>이미지 업로드</Button>
-        <Button type="primary" style={{ float: "right" }}>
+        <Button type="primary" style={{ float: "right" }} htmlType="submit">
           짹짹
         </Button>
       </div>
