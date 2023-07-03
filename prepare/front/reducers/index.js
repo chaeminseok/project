@@ -2,7 +2,7 @@ import { HYDRATE } from "next-redux-wrapper";
 import user from "./user";
 import post from "./post";
 import { combineReducers } from "redux";
-
+import "antd/dist/antd.css";
 //rootReducer는 (이전상태, 액션)=>다음상태
 const rootReducer = combineReducers({
   index: (state = {}, action) => {
