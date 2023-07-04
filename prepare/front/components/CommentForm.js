@@ -1,6 +1,36 @@
-import { Form } from "antd";
-
+import { Form, Input, Button } from "antd";
+import useInput from "../hooks/useInput";
+import React, { useCallback } from "react";
+import propTypes from "prop-types";
+import { useSelector } from "react-redux";
 const CommentForm = ({ post }) => {
-  return <Form>폼</Form>;
+  const id = useSelector((state) => state.user.me?.id);
+  const [commentText, onChangeCommentText] = useInput("");
+  const onSubmitForm = useCallback(() => {
+    console.log(post.id, commentText);
+  }, [commentText]);
+
+  return (
+    <Form onFinish={onSubmitForm}>
+      <Form.Item style={{ position: "relative", margin: 0 }}>
+        <Input.TextArea
+          value={commentText}
+          onChange={onChangeCommentText}
+          rows={4}
+        />
+        <Button
+          style={{ position: "absolute", right: 0, bottom: -40, zIndex: 1 }}
+          type="primary"
+          htmlType="submit"
+        >
+          삐약
+        </Button>
+      </Form.Item>
+    </Form>
+  );
+};
+
+CommentForm.propTypes = {
+  post: propTypes.object.isRequired,
 };
 export default CommentForm;
