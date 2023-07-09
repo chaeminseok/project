@@ -6,15 +6,21 @@ const PostImages = ({ images }) => {
   const onZoom = useCallback(() => {
     setShowImagesZoom(true);
   });
+  const onClose = useCallback(() => {
+    setShowImagesZoom(false);
+  }, []);
   if (images.length === 1) {
     return (
       <>
         <img
           role="presentation"
           src={images[0].src}
+          style={{ width: "50%" }}
           alt={images[0].src}
           onClick={onZoom}
         />
+
+        {showImagesZoom && <ImageZoom images={images} onClose={onClose} />}
       </>
     );
   } else if (images.length === 2) {
@@ -34,7 +40,7 @@ const PostImages = ({ images }) => {
           alt={images[1].src}
           onClick={onZoom}
         />
-        ;
+        {showImagesZoom && <ImageZoom images={images} onClose={onClose} />}
       </>
     );
   }
