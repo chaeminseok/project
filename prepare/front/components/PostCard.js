@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Card, Popover, Button, Avatar, List, Comment } from "antd";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import {
   RetweetOutlined,
   HeartOutlined,
@@ -92,12 +92,12 @@ const PostCard = ({ post }) => {
   );
 };
 PostCard.propTypes = {
-  post: propTypes.shape({
-    id: propTypes.number,
-    User: propTypes.object,
-    content: propTypes.string,
-    Comments: propTypes.arrayOf(propTypes.object),
-    Images: propTypes.arrayOf(propTypes.object),
+  post: PropTypes.shape({
+    id: PropTypes.number,
+    User: PropTypes.object,
+    content: PropTypes.string,
+    Comments: PropTypes.arrayOf(PropTypes.object),
+    Images: PropTypes.arrayOf(PropTypes.object),
   }).isRequired,
 };
 export default PostCard;

@@ -1,7 +1,7 @@
 import { Form, Input, Button } from "antd";
 import useInput from "../hooks/useInput";
 import React, { useCallback } from "react";
-import propTypes from "prop-types";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 const CommentForm = ({ post }) => {
   const id = useSelector((state) => state.user.me?.id);
@@ -31,6 +31,6 @@ const CommentForm = ({ post }) => {
 };
 
 CommentForm.propTypes = {
-  post: propTypes.object.isRequired,
+  post: PropTypes.object.isRequired,
 };
 export default CommentForm;
