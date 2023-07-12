@@ -3,7 +3,7 @@ import { Avatar, Card, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { logoutAction } from "../reducers/user";
 const UserProfile = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const onLogout = useCallback(() => {
     dispatch(logoutAction());
   });

@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 import { Card, Popover, Button, Avatar, List, Comment } from "antd";
 import PropTypes from "prop-types";
+import PostCardContent from "./PostCardContent";
 import {
   RetweetOutlined,
   HeartOutlined,
@@ -66,7 +67,7 @@ const PostCard = ({ post }) => {
         <Card.Meta
           avatar={<Avatar>{post.User.nickname}</Avatar>}
           title={post.User.nickname}
-          description={post.content}
+          description={<PostCardContent postData={post.content} />}
         />
       </Card>
       {commentFormOpened && (
